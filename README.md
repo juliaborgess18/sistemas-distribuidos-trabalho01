@@ -1,18 +1,18 @@
-- Agora falta fazer 3 funções:
-    3 'Apagar uma regra'  
-    6 'Salvar as regras do firewall' 
-    7 'Restaurar as regras do firewall' 
+-- Funções finalizadas, falta verificar se o script nçao apresenta erros.
 
-O Steve está no post aguardando vocês decidirem que ficará com cada função:
+O Steve foi dormir, e ele não quer barulho
 
-╲╲┏━━┓╲╲
-╲━╋━━╋━╲
-╲╲┃◯◯┃╲╲
-╲┏╯┈◣┃╲╲
-╲╰━┳┳╯╲╲
-▔▔▔┗┗▔▔▔
+      _____|~~\_____      _____________
+  _-~               \    |    \
+  _-    | )     \    |__/   \   \
+  _-         )   |   |  |     \  \
+  _-    | )     /    |--|      |  |
+ __-_______________ /__/_______|  |_________
+(                |----         |  |
+ `---------------'--\\\\      .`--'
+                              `||||
 
-Resposta Igor:_________________
+Resposta Igor: Não
 
 Resposta Júlia:
     4 'Listar todas as regras' 
