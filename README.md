@@ -1,8 +1,9 @@
-- Estou trbalhando na função 1 (criação de regra do firewall);
+- Agora falta fazer 3 funções:
+    3 'Apagar uma regra'  
+    6 'Salvar as regras do firewall' 
+    7 'Restaurar as regras do firewall' 
 
-Se quiserem podemos divir as o trabalho em funções, precisamos definir quem ficará com qual;
-
-O Steve está no post aguardando vocês decidirem as funções:
+O Steve está no post aguardando vocês decidirem que ficará com cada função:
 
 ╲╲┏━━┓╲╲
 ╲━╋━━╋━╲
@@ -13,6 +14,10 @@ O Steve está no post aguardando vocês decidirem as funções:
 
 Resposta Igor:_________________
 
-Resposta Júlia:____________________
+Resposta Júlia:
+    4 'Listar todas as regras' 
+    5 'Apagar todas as regras' 
 
-Resposta Raphael: Criação das regras + ...
+Resposta Raphael: 
+    1 'Criar uma regra' 
+    2 'Configurar Política Padrão' 

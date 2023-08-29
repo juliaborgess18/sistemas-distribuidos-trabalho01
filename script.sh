@@ -74,6 +74,44 @@ criar_regra(){
 	menu_opcoes_firewall
 }
 
+politica_padrao(){
+	
+	# VARIÁVEIS
+	cadeia=""
+	alvo=""
+	
+	# DEFINE A CADEIA DA REGRA
+	opcao=$( dialog --stdout --menu 'Escolha a CADEIA para regra:' 0 0 0 1 'Entrada' 2 'Saída' 3 'Encaminhamento' 4 'Voltar')
+	case $opcao in
+	    1) cadeia="INPUT";;
+	    2) cadeia="OUTPUT";;
+	    3) cadeia="FORWARD";;
+	    4) menu_opcoes_firewall;;
+	    *) dialog --infobox 'Opção inválida!' 0 0;;
+	esac
+	
+	# DEFINE O ALVO DA REGRA
+	opcao=$( dialog --stdout --menu 'Escolha o ALVO da regra:' 0 0 0 1 'Aceitar' 2 'Rejeitar' 3 'Descartar' 4 'Voltar')
+	case $opcao in
+	    1) alvo="ACCEPT";;
+	    2) alvo="REJECT";;
+	    3) alvo="DROP";;
+	    4) menu_opcoes_firewall;;
+	    *) dialog --infobox 'Opção inválida!' 0 0;;
+	esac
+	
+	 # CÓDIGO RESPONSÁVEL POR CRIAR AS REGRAS UTILIZANDO AS VARÁVEIS
+ 	sudo iptables -I $cadeia -j $alvo
+ 	
+ 	# MOSTRANDO A REGRA AO USUÁRIO
+ 	dialog --msgbox "REGRA CIRADA:\n\niptables -I $cadeia -j $alvo" 20 60
+ 	
+	# CHAMAR O MENU DEPOIS DE CRIAR A REGRA
+	menu_opcoes_firewall
+}
+
+
+
 listar_regras(){
     iptables_output=$(sudo iptables -L)
     dialog --msgbox "LISTA DAS REGRAS:\n\n$iptables_output" 20 60
@@ -97,7 +135,7 @@ menu_opcoes_firewall(){
         opcao=$( dialog --stdout --menu 'Digite uma opção?' 0 0 0 1 'Criar uma regra' 2 'Configurar Política Padrão' 3 'Apagar uma regra'  4 'Listar todas as regras' 5 'Apagar todas as regras' 6 'Salvar as regras do firewall' 7 'Restaurar as regras do firewall' 8 'Voltar')
         case $opcao in
             1) criar_regra;;
-            2) FALTA IMPLEMENTAR ;;
+            2) politica_padrao;;
             3) FALTA IMPLEMENTAR;;
             4) listar_regras;;
             5) apagar_regras;;
