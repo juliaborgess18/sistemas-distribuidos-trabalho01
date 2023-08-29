@@ -104,7 +104,7 @@ politica_padrao(){
  	sudo iptables -I $cadeia -j $alvo
  	
  	# MOSTRANDO A REGRA AO USUÁRIO
- 	dialog --msgbox "REGRA CIRADA:\n\niptables -I $cadeia -j $alvo" 20 60
+ 	dialog --msgbox "REGRA CRIADA:\n\niptables -I $cadeia -j $alvo" 20 60
  	
 	# CHAMAR O MENU DEPOIS DE CRIAR A REGRA
 	menu_opcoes_firewall
@@ -130,17 +130,63 @@ listar_participantes(){
     fi
 }
 
+apagar_uma_regra(){
+	while [ $? == 0 ];do
+		opcao=$( dialog --stdout --menu 'Escolha uma cadeia.' 0 0 0 1 'Entrada' 2 'Saida'  3 'Encaminhamento' 4 'Sair')
+		case $opcao in
+			1) 	
+				regras=$(sudo iptables -L INPUT --line-numbers)
+				indice=$(dialog --inputbox "INPUT:\n\n$regras" 20 60 --stdout)
+				sudo iptables -D INPUT $indice
+				dialog --infobox 'Regra apagada com sucesso!' 0 0
+				read
+				;;
+			2) 
+				regras=$(sudo iptables -L OUTPUT --line-numbers)
+				indice=$(dialog --inputbox "OUTPUT:\n\n$regras" 20 60 --stdout)
+				sudo iptables -D OUTPUT $indice
+				dialog --infobox 'Regra apagada com sucesso!' 0 0
+				read
+				;;
+			3) 
+				regras=$(sudo iptables -L FORWARD --line-numbers)
+				indice=$(dialog --inputbox "FORWARD:\n\n$regras" 20 60 --stdout)
+				sudo iptables -D FORWARD $indice
+				dialog --infobox 'Regra apagada com sucesso!' 0 0
+				read
+				;;
+			4) menu_principal;;
+			*) dialog --infobox 'Opção inválida!' 0 0;;
+		esac
+	done
+}
+
+salvar_regra_do_firewall(){
+	nome=$(dialog --stdout --inputbox 'Nome do arquivo(ex: firewall.txt): ' 20 60)
+	sudo iptables-save > $nome
+	dialog --infobox 'Arquivo salvo com sucesso!' 0 0
+	read
+}
+
+restaurar_regras_do_firewall(){
+	lista=$(ls)
+	regras=$( dialog --inputbox "Arquivos:\n\n$lista" 20 60 --stdout )
+	sudo iptables-restore < $regras
+	dialog --infobox 'Regras restauradas com sucesso!' 0 0
+	read
+}
+
 menu_opcoes_firewall(){
     while [ $? == 0 ];do
         opcao=$( dialog --stdout --menu 'Digite uma opção?' 0 0 0 1 'Criar uma regra' 2 'Configurar Política Padrão' 3 'Apagar uma regra'  4 'Listar todas as regras' 5 'Apagar todas as regras' 6 'Salvar as regras do firewall' 7 'Restaurar as regras do firewall' 8 'Voltar')
         case $opcao in
             1) criar_regra;;
             2) politica_padrao;;
-            3) FALTA IMPLEMENTAR;;
+            3) apagar_uma_regra;;
             4) listar_regras;;
             5) apagar_regras;;
-            6) FALTA IMPLEMENTAR;;
-            7) FALTA IMPLEMENTAR;;
+            6) salvar_regra_do_firewall;;
+            7) restaurar_regras_do_firewall;;
             8) menu_principal;;
             *) dialog --infobox 'Opção inválida!' 0 0;;
         esac
