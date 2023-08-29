@@ -13,6 +13,6 @@ O Steve está no post aguardando vocês decidirem as funções:
 
 Resposta Igor:_________________
 
-Resposta Júllia:____________________
+Resposta Júlia:____________________
 
 Resposta Raphael: Criação das regras + ...
