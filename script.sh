@@ -68,7 +68,7 @@ criar_regra(){
  	sudo iptables -I $cadeia $filtro_endereco_origem $filtro_endereco_destino $filtro_protocolo $filtro_porta_origem $filtro_porta_destino $filtro_mac $filtro_estado $filtro_interface_origem $filtro_interface_saida -j $alvo
  	
  	# MOSTRANDO A REGRA AO USUÁRIO
- 	dialog --msgbox "REGRA CIRADA:\n\niptables -I $cadeia $filtro_endereco_origem $filtro_endereco_destino $filtro_protocolo $filtro_porta_origem $filtro_porta_destino $filtro_mac $filtro_estado filtro_interface_origem $filtro_interface_saida -j $alvo" 20 60
+ 	dialog --msgbox "REGRA CRIADA:\n\niptables -I $cadeia $filtro_endereco_origem $filtro_endereco_destino $filtro_protocolo $filtro_porta_origem $filtro_porta_destino $filtro_mac $filtro_estado filtro_interface_origem $filtro_interface_saida -j $alvo" 20 60
  	
 	# CHAMAR O MENU DEPOIS DE CRIAR A REGRA
 	menu_opcoes_firewall
