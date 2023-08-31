@@ -1,6 +1,6 @@
 -- Funções finalizadas, falta verificar se o script nçao apresenta erros.
 
-O Steve foi dormir, e ele não quer barulho
+O Steve foi dormir, e ele não quer barulho!!!!
 
       _____|~~\_____      _____________
   _-~               \    |    \
